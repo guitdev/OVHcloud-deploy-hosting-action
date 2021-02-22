@@ -1,6 +1,6 @@
-name: 'Deploy to OVH hosting'
-description: 'Deploy a repositories contents to an OVH Hosting Plan with SSH support'
-author: pitscher
+name: 'Deploy to OVHcloud hosting'
+description: 'Deploy a repositories contents to an OVHcloud Hosting Plan with SSH support'
+author: guidev
 branding:
   icon: 'truck'  
   color: 'blue'
