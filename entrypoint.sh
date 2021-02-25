@@ -8,7 +8,7 @@ fi
 
 curl -L --insecure $OVH_HOSTING_URL
 
-sshpass -p "$OVH_HOSTING_PASSWORD" ssh -o StrictHostKeyChecking=no $OVH_HOSTING_USER@$OVH_HOSTING_DOMAIN "rm -rvf $DOCUMENT_ROOT && mkdir $DOCUMENT_ROOT && git clone $REPOSITORY_URL $DOCUMENT_ROOT && bash $DOCUMENT_ROOT/my_script.sh"
+sshpass -p "$OVH_HOSTING_PASSWORD" ssh -o StrictHostKeyChecking=no $OVH_HOSTING_USER@$OVH_HOSTING_DOMAIN "rm -rvf $DOCUMENT_ROOT && mkdir $DOCUMENT_ROOT && git clone $REPOSITORY_URL $DOCUMENT_ROOT && export DOCUMENT_ROOT=$DOCUMENT_ROOT && bash $DOCUMENT_ROOT/my_script.sh"
 
 echo 'Done.'
 
