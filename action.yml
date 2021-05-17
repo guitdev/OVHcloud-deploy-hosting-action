@@ -1,9 +1,0 @@
-name: 'Deploy to OVHcloud hosting'
-description: 'Deploy a repositories contents to an OVHcloud Hosting Plan with SSH support'
-author: guitdev
-branding:
-  icon: 'truck'  
-  color: 'blue'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
