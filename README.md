@@ -17,7 +17,7 @@ Get started today with a free trial of our Web PaaS "POWER" !
 
 ## Add GitHub Action
 
-Add a deployment action [![Create Action](https://labs.ovh.com/sites/default/files/inline-images/Deploy%20to%20OVHcloud.png)](/new/master?filename=.github%2Fworkflows%2Fovhcloud-deploy.yml)
+Add a deployment action [![Create Action](https://labs.ovh.com/sites/default/files/inline-images/Deploy%20to%20OVHcloud.png)](new/master?filename=.github%2Fworkflows%2Fovhcloud-deploy.yml)
 
 Copy and paste the following snippet into your .yml file :
 
@@ -91,10 +91,10 @@ Create several secrets in your repository:
 
 ```OVH_WEBSITE_PUBLICDIR``` : public directory related to your OVHCloud Power hosting (Ex: public)
 
-![Alt Create GitHub secrets](img/create_secrets.gif)
+![Create GitHub secrets.gif](img/create_secrets.gif)
 
 ## Run workflow
-![Alt Run workflow](img/run_workflow.gif)
+![Run workflow.gif](img/run_workflow.gif)
 
 ## Job is done
 
