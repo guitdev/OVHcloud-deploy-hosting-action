@@ -15,7 +15,7 @@ Get started today with a free trial of our Web PaaS "POWER" !
 [![Try Nodejs](https://labs.ovh.com/sites/default/files/inline-images/Try%20OVHcloud%20Power%20for%20Node.js_.png)](https://www.ovh.com/ie/order/express/#/express/review?products=~(~(productId~%27powerHosting~planCode~%27powerBeta1~duration~%27P12M~configuration~(~(label~%27language~value~%27nodejs)))))
 
 
-## Add GitHub Action
+## Add a GitHub Action
 
 Add a deployment action [![Create Action](https://labs.ovh.com/sites/default/files/inline-images/Deploy%20to%20OVHcloud.png)](new/master?filename=.github%2Fworkflows%2Fovhcloud-deploy.yml)
 
@@ -71,7 +71,7 @@ Copy and paste the following snippet into your .yml file :
 
 
 
-## Github Secrets :
+## Add your Github Secrets
 
 Create several secrets in your repository:
 
@@ -96,6 +96,6 @@ Create several secrets in your repository:
 ## Run workflow
 ![Run workflow.gif](img/run_workflow.gif)
 
-## Job is done
+## It's Done !
 
 Go to ```OVH_WEBSITE_URL``` 
