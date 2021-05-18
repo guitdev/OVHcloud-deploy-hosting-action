@@ -17,7 +17,7 @@ Get started today with a free trial of our Web PaaS "POWER" !
 
 ## Add a GitHub Action
 
-Add a deployment action [![Create Action](https://labs.ovh.com/sites/default/files/inline-images/Deploy%20to%20OVHcloud.png)](new/master?filename=.github%2Fworkflows%2Fovhcloud-deploy.yml)
+Add a deployment action [![Create Action](https://labs.ovh.com/sites/default/files/inline-images/Deploy%20to%20OVHcloud.png)]('${GITHUB_SERVER_URL}'/'${GITHUB_REPOSITORY}'/new/master?filename=.github%2Fworkflows%2Fovhcloud-deploy.yml)
 
 Copy and paste the following snippet into your .yml file :
 
@@ -50,19 +50,7 @@ Copy and paste the following snippet into your .yml file :
 	            OVH_SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
 	            OVH_SSH_USERNAME: ${{ secrets.OVH_SSH_USERNAME }}
 	            OVH_SSH_PASSWORD: ${{ secrets.OVH_SSH_PASSWORD }}
-	        run: sshpass -p ${OVH_SSH_PASSWORD} ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oLogLevel=quiet ${OVH_SSH_USERNAME}@${OVH_SSH_HOST} -p ${OVH_SSH_PORT} -- 'rm -rf ${HOME}/.powerworkflow && git clone '${GITHUB_SERVER_URL}'/'${GITHUB_REPOSITORY}'.git --single-branch --branch '${GITHUB_REF##*/}' ${HOME}/.powerworkflow'
-
-	      - name: Running install script over SSH
-	        env:
-	            OVH_SSH_HOST: ${{ secrets.OVH_SSH_HOST }}
-	            OVH_SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
-	            OVH_SSH_USERNAME: ${{ secrets.OVH_SSH_USERNAME }}
-	            OVH_SSH_PASSWORD: ${{ secrets.OVH_SSH_PASSWORD }}
-	            OVH_WEBSITE_DOCUMENTROOT: ${{ secrets.OVH_WEBSITE_DOCUMENTROOT }}
-	            OVH_WEBSITE_ENTRYPOINT: ${{ secrets.OVH_WEBSITE_ENTRYPOINT }}
-	            OVH_WEBSITE_PUBLICDIR: ${{ secrets.OVH_WEBSITE_PUBLICDIR }}
-	            OVH_WEBSITE_URL: ${{ secrets.OVH_WEBSITE_URL }}
-	        run: sshpass -p ${OVH_SSH_PASSWORD} ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oLogLevel=quiet ${OVH_SSH_USERNAME}@${OVH_SSH_HOST} -p ${OVH_SSH_PORT} -- 'bash ${HOME}/.powerworkflow/power_install.sh -u '${OVH_WEBSITE_URL}' -d '${OVH_WEBSITE_DOCUMENTROOT}' -e '${OVH_WEBSITE_ENTRYPOINT}' -p '${OVH_WEBSITE_PUBLICDIR}''
+	        run: sshpass -p ${OVH_SSH_PASSWORD} ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oLogLevel=quiet ${OVH_SSH_USERNAME}@${OVH_SSH_HOST} -p ${OVH_SSH_PORT} -- 'rm -rf ${HOME} && git clone '${GITHUB_SERVER_URL}'/'${GITHUB_REPOSITORY}'.git --single-branch --branch '${GITHUB_REF##*/}' ${HOME}'
 
 	      - name: WakeUp website
 	        env:
