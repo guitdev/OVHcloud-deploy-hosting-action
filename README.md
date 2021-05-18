@@ -16,12 +16,17 @@ Get started today with a free trial of our Web PaaS "POWER" !
 
 
 ## Add a GitHub Action
+### About GitHub Actions
+Automate your workflow from idea to production
 
-Add a deployment action [![Create Action](https://labs.ovh.com/sites/default/files/inline-images/Deploy%20to%20OVHcloud.png)](new/main?filename=.github%2Fworkflows%2Fovhcloud-deploy.yml)
-<!-- /github_user/gihub_repo/new/github_branch?filename=.github%2Fworkflows%2Fmain.yml&workflow_template=blank -->
-<!-- https://github.com/user/repo/new/master?filename=.github%2Fworkflows%2Fmain.yml&workflow_template=blank -->
+GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.
 
-Copy and paste the following snippet into your .yml file :
+(https://docs.github.com/en/actions/quickstart)
+
+### Creating your first workflow
+
+- From your repository on GitHub, create a new file in the ```.github/workflows``` directory named ```ovhcloud-deploy.yml```
+- Copy and paste the following snippet into your ```ovhcloud-deploy.yml``` file :
 
 	name: Deploy to OVHcloud Power
 
