@@ -19,9 +19,10 @@ Get started today with a free trial of our Web PaaS "POWER" !
 
 Add a deployment action [![Create Action](https://labs.ovh.com/sites/default/files/inline-images/Deploy%20to%20OVHcloud.png)](?filename=.github%2Fworkflows%2Fovhcloud-deploy.yml)
 <!-- /github_user/gihub_repo/new/github_branch?filename=.github%2Fworkflows%2Fmain.yml&workflow_template=blank -->
-
+${{ secrets.OVH_SSH_PORT }}
 $GITHUB_WORKFLOW
-$GITHUB_REPOSITORY
+${GITHUB_SERVER_URL}
+${GITHUB_REPOSITORY}
 
 
 Copy and paste the following snippet into your .yml file :
