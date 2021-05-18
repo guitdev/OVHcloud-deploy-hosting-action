@@ -17,7 +17,7 @@ Get started today with a free trial of our Web PaaS "POWER" !
 
 ## Add a GitHub Action
 
-Add a deployment action [![Create Action](https://labs.ovh.com/sites/default/files/inline-images/Deploy%20to%20OVHcloud.png)]('${GITHUB_SERVER_URL}'/'${GITHUB_REPOSITORY}'new/main?filename=.github%2Fworkflows%2Fovhcloud-deploy.yml)
+Add a deployment action [![Create Action](https://labs.ovh.com/sites/default/files/inline-images/Deploy%20to%20OVHcloud.png)](new/main?filename=.github%2Fworkflows%2Fovhcloud-deploy.yml)
 
 Copy and paste the following snippet into your .yml file :
 
