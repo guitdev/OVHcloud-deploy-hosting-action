@@ -21,48 +21,45 @@ Automate your workflow from idea to production
 
 GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.
 
-(https://docs.github.com/en/actions/quickstart)
+(source: https://docs.github.com/en/actions/quickstart)
 
 ### Creating your first workflow
 
 - From your repository on GitHub, create a new file in the ```.github/workflows``` directory named ```ovhcloud-deploy.yml```
 - Copy and paste the following snippet into your ```ovhcloud-deploy.yml``` file :
 
-	name: Deploy to OVHcloud Power
 
-	on:
-	  push:
-	    branches: [ master ]
-	  
-	  workflow_dispatch:
+		name: Deploy to OVHcloud Power
+		on:
+		  push:
+		    branches: [ master ]
+		  workflow_dispatch:
+		jobs:
+		  deploy:    
+		    runs-on: ubuntu-20.04
+		    steps:
+		      - name: Install prerequisites
+		        run: |
+		          sudo apt-get update
+		          sudo apt-get install -y curl jq sshpass openssh-client
 
-	jobs:
-	  deploy:    
-	    runs-on: ubuntu-20.04
+		      - name: WakeUp website
+		        env:
+		            OVH_WEBSITE_URL: ${{ secrets.OVH_WEBSITE_URL }}
+		        run: curl --silent --insecure --location --write-out "%{http_code}" -o /dev/null ${OVH_WEBSITE_URL}
 
-	    steps:
-	      - name: Install prerequisites
-	        run: |
-	          sudo apt-get update
-	          sudo apt-get install -y curl jq sshpass openssh-client
+		      - name: Clone over SSH
+		        env:
+		            OVH_SSH_HOST: ${{ secrets.OVH_SSH_HOST }}
+		            OVH_SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
+		            OVH_SSH_USERNAME: ${{ secrets.OVH_SSH_USERNAME }}
+		            OVH_SSH_PASSWORD: ${{ secrets.OVH_SSH_PASSWORD }}
+		        run: sshpass -p ${OVH_SSH_PASSWORD} ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oLogLevel=quiet ${OVH_SSH_USERNAME}@${OVH_SSH_HOST} -p ${OVH_SSH_PORT} -- 'rm -rf ${HOME} && git clone '${GITHUB_SERVER_URL}'/'${GITHUB_REPOSITORY}'.git --single-branch --branch '${GITHUB_REF##*/}' ${HOME}'
 
-	      - name: WakeUp website
-	        env:
-	            OVH_WEBSITE_URL: ${{ secrets.OVH_WEBSITE_URL }}
-	        run: curl --silent --insecure --location --write-out "%{http_code}" -o /dev/null ${OVH_WEBSITE_URL}
-
-	      - name: Clone over SSH
-	        env:
-	            OVH_SSH_HOST: ${{ secrets.OVH_SSH_HOST }}
-	            OVH_SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
-	            OVH_SSH_USERNAME: ${{ secrets.OVH_SSH_USERNAME }}
-	            OVH_SSH_PASSWORD: ${{ secrets.OVH_SSH_PASSWORD }}
-	        run: sshpass -p ${OVH_SSH_PASSWORD} ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oLogLevel=quiet ${OVH_SSH_USERNAME}@${OVH_SSH_HOST} -p ${OVH_SSH_PORT} -- 'rm -rf ${HOME} && git clone '${GITHUB_SERVER_URL}'/'${GITHUB_REPOSITORY}'.git --single-branch --branch '${GITHUB_REF##*/}' ${HOME}'
-
-	      - name: WakeUp website
-	        env:
-	            OVH_WEBSITE_URL: ${{ secrets.OVH_WEBSITE_URL }}
-	        run: curl --silent --fail --insecure --location --write-out "%{http_code}" -o /dev/null ${OVH_WEBSITE_URL}
+		      - name: WakeUp website
+		        env:
+		            OVH_WEBSITE_URL: ${{ secrets.OVH_WEBSITE_URL }}
+		        run: curl --silent --fail --insecure --location --write-out "%{http_code}" -o /dev/null ${OVH_WEBSITE_URL}
 
 
 
